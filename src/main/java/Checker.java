@@ -17,7 +17,7 @@ public class Checker {
             System.out.println(0);
         else
         {
-            if(password.length() >= 6 && password.length() <= 20)
+            if(password.length() <= 20)
             {
                 String partialRegex = "(?=.*[a-z])";
                 Pattern partialPattern = Pattern.compile(partialRegex);
@@ -173,6 +173,35 @@ public class Checker {
 
                     }
                     partialMatcher = partialPattern.matcher(password);
+                }
+
+                if(password.length() < 6)
+                {
+                    char c = 'a';
+                    for(char i = 'a'; i <= 'z'; i++)
+                    {
+                        if(!password.contains("" + i))
+                        {
+                            c = i;
+                            break;
+                        }
+                    }
+                    int aux = 0;
+                    while(password.length() < 6)
+                    {
+                        if(aux % 2 == 0)
+                        {
+                            password = password + c;
+                        }
+                        else
+                        {
+                            char upC;
+                            upC = (char) (c - 'a' + 'A');
+                            password = password + upC;
+                        }
+                        aux++;
+                        cnt++;
+                    }
                 }
 
             }
