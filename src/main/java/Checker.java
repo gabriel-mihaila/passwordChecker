@@ -206,7 +206,7 @@ public class Checker {
 
             }
             System.out.println(cnt);
-            System.out.println(password);
+
         }
     }
 }
